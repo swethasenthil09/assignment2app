@@ -51,47 +51,62 @@ const ServiceProviderForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 bg-white rounded-xl shadow-md p-6 border border-green-300"
+    >
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Name:
+        </label>
         <input
           name="name"
           type="text"
           value={formData.name}
           onChange={handleChange}
           required
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
-      </label>
-      <br /><br />
-      <label>
-        Phone Number:
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Phone Number:
+        </label>
         <input
           name="phone"
           type="tel"
           value={formData.phone}
           onChange={handleChange}
           required
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
-      </label>
-      <br /><br />
-      <label>
-        Address:
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Address:
+        </label>
         <input
           name="address"
           type="text"
           value={formData.address}
           onChange={handleChange}
           required
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
-      </label>
-      <br /><br />
-      <label>
-        Service Type:
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Service Type:
+        </label>
         <select
           name="serviceType"
           value={formData.serviceType}
           onChange={handleChange}
           required
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         >
           <option value="">Select</option>
           <option value="Plumber">Plumber</option>
@@ -99,35 +114,53 @@ const ServiceProviderForm = () => {
           <option value="Tailor">Tailor</option>
           <option value="Tutor">Tutor</option>
         </select>
-      </label>
-      <br /><br />
-      <label>
-        Upload Photo/ID Proof:
-        <input type="file" onChange={handleFileChange} accept="image/*" />
-      </label>
-      <br /><br />
-      <label>
-        Languages Spoken:
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Upload Photo/ID Proof:
+        </label>
+        <input
+          type="file"
+          onChange={handleFileChange}
+          accept="image/*"
+          className="w-full px-4 py-2 border rounded-lg bg-white shadow-sm"
+        />
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Languages Spoken:
+        </label>
         <input
           name="language"
           type="text"
           value={formData.language}
           onChange={handleChange}
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
-      </label>
-      <br /><br />
-      <label>
-        Availability:
+      </div>
+
+      <div>
+        <label className="block text-lg font-medium text-green-800 mb-1">
+          Availability:
+        </label>
         <input
           name="availability"
           type="text"
           value={formData.availability}
           onChange={handleChange}
           placeholder="e.g. 9 AM - 5 PM"
+          className="w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-300 focus:outline-none"
         />
-      </label>
-      <br /><br />
-      <button type="submit">Register</button>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition-transform transform hover:scale-105"
+      >
+        ✅ Register
+      </button>
     </form>
   );
 };
