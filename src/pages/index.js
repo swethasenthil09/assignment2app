@@ -1,48 +1,67 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white font-sans">
-      {/* Navbar */}
-      <header className="bg-green-700 text-white py-4 shadow-md">
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Smart Gram Sewa</h1>
-          <nav>
-            <ul className="flex gap-6">
-              <li>
-                <Link href="/" className="hover:text-green-300">Home</Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-green-300">FAQs</Link>
-              </li>
-              {/* You can add more links like Contact, Services, etc. */}
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <main className="text-center py-20 px-6">
-        <h2 className="text-4xl font-bold text-green-800 mb-4">
-          Empowering Rural India with Local Services
-        </h2>
-        <p className="text-gray-700 max-w-2xl mx-auto text-lg">
-          Smart Gram Sewa connects villages with skilled professionals like plumbers, electricians, tailors, and tutors — available at your doorstep.
+    <div className="min-h-screen bg-gradient-to-br from-green-100 via-lime-100 to-yellow-50 flex items-center justify-center p-6">
+      <div className="max-w-5xl w-full bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-10 border border-green-300">
+        
+        <h1 className="text-5xl font-extrabold text-center text-green-800 mb-6 drop-shadow-md">
+          🌾 Smart Gram Sewa
+        </h1>
+        <p className="text-center text-lg text-gray-700 mb-10">
+          Empowering rural and semi-urban communities with on-demand local services like plumbing, tailoring, electrician help, and tutoring.
         </p>
 
-        <div className="mt-8">
-          <Link href="/faq">
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-              Read FAQs
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          
+          {/* Service Booking Section */}
+          <div className="bg-green-50 rounded-2xl shadow-md p-6 border hover:shadow-xl transition-shadow">
+            <h2 className="text-2xl font-semibold text-green-700 mb-3">📋 Book a Service</h2>
+            <p className="text-gray-600 mb-6">
+              Need help with home repairs, tailoring, or tutoring? Quickly book a trusted local professional near you.
+            </p>
+            <Link href="/BookingConfirmation">
+              <a className="inline-block px-6 py-3 bg-green-600 text-white font-medium rounded-full hover:bg-green-700 transition-transform transform hover:scale-105">
+                🚀 Book Now
+              </a>
+            </Link>
+          </div>
+
+          {/* Provider Registration Section */}
+          <div className="bg-yellow-50 rounded-2xl shadow-md p-6 border hover:shadow-xl transition-shadow">
+            <h2 className="text-2xl font-semibold text-yellow-700 mb-3">🧑‍🔧 Register as a Service Provider</h2>
+            <p className="text-gray-600 mb-6">
+              Are you a local worker? Join our platform to offer your services and reach people in your area.
+            </p>
+            <Link href="/RegisterServiceProvider">
+              <a className="inline-block px-6 py-3 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 transition-transform transform hover:scale-105">
+                📝 Register Now
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        {/* Navigation Buttons Section */}
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
+          <Link href="/about">
+            <a className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-transform hover:scale-105">
+              📘 About Us
+            </a>
+          </Link>
+
+          <Link href="/contact">
+            <a className="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 shadow-md transition-transform hover:scale-105">
+              📞 Contact Us
+            </a>
+          </Link>
+
+          <Link href="/questions">
+            <a className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 shadow-md transition-transform hover:scale-105">
+              🆘 Help
+            </a>
           </Link>
         </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="text-center text-sm text-gray-600 py-6 border-t mt-12">
-        © 2025 Smart Gram Sewa. All rights reserved.
-      </footer>
+      </div>
     </div>
   );
 }
