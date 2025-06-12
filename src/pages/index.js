@@ -8,6 +8,7 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold text-center text-green-800 mb-6 drop-shadow-md">
           🌾 Smart Gram Sewa
         </h1>
+
         <p className="text-center text-lg text-gray-700 mb-10">
           Empowering rural and semi-urban communities with on-demand local services like plumbing, tailoring, electrician help, and tutoring.
         </p>
