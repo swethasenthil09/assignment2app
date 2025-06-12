@@ -13,9 +13,9 @@ export default function Home() {
                 <Link href="/" className="hover:text-green-300">Home</Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-green-300">FAQs</Link>
+                <Link href="/questions" className="hover:text-green-300">Help</Link>
               </li>
-              {/* You can add more links like Contact, Services, etc. */}
+              {/* Add other navigation links if needed */}
             </ul>
           </nav>
         </div>
@@ -31,9 +31,9 @@ export default function Home() {
         </p>
 
         <div className="mt-8">
-          <Link href="/faq">
+          <Link href="/questions">
             <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-              Read FAQs
+              Need Help?
             </button>
           </Link>
         </div>
