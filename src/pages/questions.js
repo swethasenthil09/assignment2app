@@ -1,48 +1,36 @@
-import Link from "next/link";
-
-export default function Home() {
+export default function Questions() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-white font-sans">
-      {/* Navbar */}
-      <header className="bg-green-700 text-white py-4 shadow-md">
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Smart Gram Sewa</h1>
-          <nav>
-            <ul className="flex gap-6">
-              <li>
-                <Link href="/" className="hover:text-green-300">Home</Link>
-              </li>
-              <li>
-                <Link href="/questions" className="hover:text-green-300">Help</Link>
-              </li>
-              {/* Add other navigation links if needed */}
-            </ul>
-          </nav>
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-white p-8 font-sans">
+      <h1 className="text-4xl font-bold text-center text-green-800 mb-10">
+        🆘 Help & Frequently Asked Questions
+      </h1>
+
+      <div className="max-w-4xl mx-auto space-y-8 text-gray-800">
+        <div>
+          <h2 className="text-xl font-semibold">1. How do I book a service?</h2>
+          <p>You can book a service by visiting the homepage and clicking on “Book Now.” Fill in your service details and submit the form.</p>
         </div>
-      </header>
 
-      {/* Hero Section */}
-      <main className="text-center py-20 px-6">
-        <h2 className="text-4xl font-bold text-green-800 mb-4">
-          Empowering Rural India with Local Services
-        </h2>
-        <p className="text-gray-700 max-w-2xl mx-auto text-lg">
-          Smart Gram Sewa connects villages with skilled professionals like plumbers, electricians, tailors, and tutors — available at your doorstep.
-        </p>
-
-        <div className="mt-8">
-          <Link href="/questions">
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-              Need Help?
-            </button>
-          </Link>
+        <div>
+          <h2 className="text-xl font-semibold">2. Who provides these services?</h2>
+          <p>Local professionals from your village or nearby areas — like plumbers, tailors, electricians, and tutors — who have registered with us.</p>
         </div>
-      </main>
 
-      {/* Footer */}
-      <footer className="text-center text-sm text-gray-600 py-6 border-t mt-12">
-        © 2025 Smart Gram Sewa. All rights reserved.
-      </footer>
+        <div>
+          <h2 className="text-xl font-semibold">3. Is there any cost to register as a provider?</h2>
+          <p>No. Registering as a service provider on Smart Gram Sewa is completely free.</p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold">4. How do I become a provider?</h2>
+          <p>Click on the “Register Now” button on the homepage and submit your skills and contact information to get listed.</p>
+        </div>
+
+        <div>
+          <h2 className="text-xl font-semibold">5. What if I face an issue with a booking?</h2>
+          <p>Please contact our support team through the Contact page. We’ll resolve your issue promptly.</p>
+        </div>
+      </div>
     </div>
   );
 }
