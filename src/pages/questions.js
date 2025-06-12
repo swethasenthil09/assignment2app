@@ -10,15 +10,12 @@ export default function Home() {
           <nav>
             <ul className="flex gap-6">
               <li>
-                <Link href="/" legacyBehavior>
-                  <a className="hover:text-green-300">Home</a>
-                </Link>
+                <Link href="/" className="hover:text-green-300">Home</Link>
               </li>
               <li>
-                <Link href="/questions" legacyBehavior>
-                  <a className="hover:text-green-300">Help</a>
-                </Link>
+                <Link href="/questions" className="hover:text-green-300">Help</Link>
               </li>
+              {/* Add other navigation links if needed */}
             </ul>
           </nav>
         </div>
@@ -34,12 +31,10 @@ export default function Home() {
         </p>
 
         <div className="mt-8">
-          <Link href="/questions" legacyBehavior>
-            <a>
-              <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-all">
-                Need Help?
-              </button>
-            </a>
+          <Link href="/questions">
+            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full shadow-lg transition-all">
+              Need Help?
+            </button>
           </Link>
         </div>
       </main>

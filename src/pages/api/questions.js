@@ -1,3 +1,5 @@
+// pages/api/ask.js
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Only POST method allowed' });
@@ -33,9 +35,9 @@ export default async function handler(req, res) {
     if (data?.choices?.[0]?.message?.content) {
       return res.status(200).json({ answer: data.choices[0].message.content });
     } else {
-      return res.status(500).json({
-        error: data.error?.message || 'No response from OpenAI',
-      });
+      return res
+        .status(500)
+        .json({ error: data.error?.message || 'No response from OpenAI' });
     }
   } catch (err) {
     console.error('Server error:', err);
