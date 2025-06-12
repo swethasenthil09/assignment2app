@@ -41,15 +41,23 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex justify-center gap-6 mt-10">
+        {/* Navigation Buttons Section */}
+        <div className="flex flex-wrap justify-center gap-4 mt-10">
           <Link href="/about">
             <a className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 shadow-md transition-transform hover:scale-105">
               📘 About Us
             </a>
           </Link>
+
           <Link href="/contact">
             <a className="px-6 py-2 bg-indigo-600 text-white rounded-full hover:bg-indigo-700 shadow-md transition-transform hover:scale-105">
               📞 Contact Us
+            </a>
+          </Link>
+
+          <Link href="/faq">
+            <a className="px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 shadow-md transition-transform hover:scale-105">
+              📖 FAQs
             </a>
           </Link>
         </div>
