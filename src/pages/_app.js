@@ -1,5 +1,11 @@
-import "@/styles/globals.css";
+import ChatWithGramSewa from './components/ChatWithGramSewa';
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+function App() {
+  return (
+    <div>
+      <ChatWithGramSewa />
+    </div>
+  );
 }
+
+export default App;
