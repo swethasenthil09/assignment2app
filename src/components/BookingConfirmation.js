@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react";
+// pages/BookingConfirmation.js
+
+import React, { useState } from "react";
+import { db } from "@/lib/firebase"; // make sure this points to your Firebase setup
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const BookingConfirmation = () => {
   const [formData, setFormData] = useState({
@@ -18,22 +22,31 @@ const BookingConfirmation = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const referenceId = "SGS" + Math.floor(Math.random() * 10000000);
     const estimatedArrival = "Today by 4:00 PM";
     const support = "1800-123-456";
-    const provider = "Raj Kumar"; // static or mock value
+    const provider = "Raj Kumar";
 
-    setConfirmation({
+    const bookingDetails = {
       ...formData,
       referenceId,
       estimatedArrival,
       support,
       provider,
-    });
-    setSubmitted(true);
+      createdAt: Timestamp.now(),
+    };
+
+    try {
+      await addDoc(collection(db, "bookings"), bookingDetails);
+      setConfirmation(bookingDetails);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("❌ Error saving booking:", error);
+      alert("Something went wrong while saving your booking. Please try again.");
+    }
   };
 
   const downloadReceipt = () => {
