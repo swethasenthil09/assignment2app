@@ -11,14 +11,6 @@ export default function Home() {
           🧰🔌📚 Empowering villages with easy, on-demand services like plumbing, tailoring, electrician work, and tutoring.
         </p>
 
-        {/* Optional Audio Instruction Button */}
-        <div className="flex justify-center mb-10">
-          <button className="flex items-center gap-2 px-4 py-2 bg-green-200 text-green-800 rounded-full shadow hover:bg-green-300 transition">
-            <span className="text-lg">🔊</span>
-            <span className="text-sm font-semibold">Tap to Hear Instructions</span>
-          </button>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Book a Service */}
           <div className="bg-green-50 rounded-3xl shadow-md p-6 border hover:shadow-xl transition-shadow text-center">
