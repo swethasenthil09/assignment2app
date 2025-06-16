@@ -1,7 +1,5 @@
-// pages/BookingConfirmation.js
-
 import React, { useState } from "react";
-import { db } from "../lib/firebase"; // ✅ This uses a relative path and will work
+import { db } from "../lib/firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const BookingConfirmation = () => {
@@ -24,6 +22,7 @@ const BookingConfirmation = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("📝 Submitting form with data:", formData);
 
     const referenceId = "SGS" + Math.floor(Math.random() * 10000000);
     const estimatedArrival = "Today by 4:00 PM";
@@ -40,28 +39,38 @@ const BookingConfirmation = () => {
     };
 
     try {
-      await addDoc(collection(db, "bookings"), bookingDetails);
+      const docRef = await addDoc(collection(db, "bookings"), bookingDetails);
+      console.log("✅ Booking saved with ID:", docRef.id);
       setConfirmation(bookingDetails);
       setSubmitted(true);
     } catch (error) {
       console.error("❌ Error saving booking:", error);
-      alert("Something went wrong while saving your booking. Please try again.");
+      alert("Something went wrong while saving your booking. Please check the console and try again.");
     }
   };
 
   const downloadReceipt = () => {
-    const file = new Blob(
-      [
-        `Smart Gram Sewa - Booking Receipt\n\nName: ${confirmation.name}\nPhone: ${confirmation.phone}\nService: ${confirmation.service}\nReference ID: ${confirmation.referenceId}\nProvider: ${confirmation.provider}\nEstimated Arrival: ${confirmation.estimatedArrival}`,
-      ],
-      { type: "text/plain" }
-    );
+    if (!confirmation) return;
 
+    const fileContent = `
+Smart Gram Sewa - Booking Receipt
+
+Name: ${confirmation.name}
+Phone: ${confirmation.phone}
+Service: ${confirmation.service}
+Reference ID: ${confirmation.referenceId}
+Assigned Provider: ${confirmation.provider}
+Estimated Arrival: ${confirmation.estimatedArrival}
+Contact Support: ${confirmation.support}
+    `.trim();
+
+    const file = new Blob([fileContent], { type: "text/plain" });
     const element = document.createElement("a");
     element.href = URL.createObjectURL(file);
     element.download = "booking_receipt.txt";
     document.body.appendChild(element);
     element.click();
+    document.body.removeChild(element);
   };
 
   return (
