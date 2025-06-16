@@ -1,3 +1,5 @@
+// pages/BookingConfirmation.js
+
 import React, { useState } from "react";
 import { db } from "../lib/firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
@@ -67,13 +69,13 @@ const BookingConfirmation = () => {
       {!submitted ? (
         <>
           <h2 className="text-3xl font-bold text-green-800 text-center mb-6">
-            📋 Book a Service
-            <div className="text-sm text-gray-600 mt-1">சேவையை பதிவு செய்யுங்கள்</div>
+            📋 Book a Service / சேவையை பதிவு செய்யவும்
           </h2>
           <form onSubmit={handleSubmit} className="space-y-5 text-gray-700">
             <div>
-              <label className="block mb-1 font-semibold">Your Name</label>
-              <div className="text-sm text-gray-600 mb-1">உங்கள் பெயர்</div>
+              <label className="block mb-1 font-semibold">
+                Your Name / உங்கள் பெயர்
+              </label>
               <input
                 name="name"
                 type="text"
@@ -84,8 +86,9 @@ const BookingConfirmation = () => {
               />
             </div>
             <div>
-              <label className="block mb-1 font-semibold">Phone Number</label>
-              <div className="text-sm text-gray-600 mb-1">தொலைபேசி எண்</div>
+              <label className="block mb-1 font-semibold">
+                Phone Number / தொலைபேசி எண்
+              </label>
               <input
                 name="phone"
                 type="tel"
@@ -96,8 +99,9 @@ const BookingConfirmation = () => {
               />
             </div>
             <div>
-              <label className="block mb-1 font-semibold">Service Type</label>
-              <div className="text-sm text-gray-600 mb-1">சேவையின் வகை</div>
+              <label className="block mb-1 font-semibold">
+                Service Type / சேவை வகை
+              </label>
               <select
                 name="service"
                 value={formData.service}
@@ -105,11 +109,11 @@ const BookingConfirmation = () => {
                 required
                 className="w-full p-2 border border-gray-300 rounded-lg"
               >
-                <option value="">Select a Service | சேவையைத் தேர்வுசெய்யவும்</option>
-                <option value="Plumber">Plumber | நீர்க்குழாய் மேற்பார்வையாளர்</option>
-                <option value="Electrician">Electrician | மின்சாதன நிபுணர்</option>
-                <option value="Tailor">Tailor | தையல்காரர்</option>
-                <option value="Tutor">Tutor | ஆசிரியர்</option>
+                <option value="">Select a Service / சேவையை தேர்வு செய்க</option>
+                <option value="Plumber">Plumber / குழாய் பழுது பார்க்கும் நபர்</option>
+                <option value="Electrician">Electrician / மின் பொறியாளர்</option>
+                <option value="Tailor">Tailor / தையல்காரர்</option>
+                <option value="Tutor">Tutor / தேர்ச்சி பயிற்சியாளர்</option>
               </select>
             </div>
             <div className="text-center">
@@ -117,7 +121,7 @@ const BookingConfirmation = () => {
                 type="submit"
                 className="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition-transform transform hover:scale-105"
               >
-                ✅ Confirm Booking <span className="text-sm block">பதிவை உறுதிப்படுத்தவும்</span>
+                ✅ Confirm Booking / சேவையை உறுதிப்படுத்தவும்
               </button>
             </div>
           </form>
@@ -125,40 +129,38 @@ const BookingConfirmation = () => {
       ) : (
         <>
           <h2 className="text-3xl font-bold text-green-800 text-center mb-6">
-            🎉 Booking Confirmed!
-            <div className="text-sm text-gray-600 mt-1">பதிவு உறுதியாகியுள்ளது!</div>
+            🎉 Booking Confirmed! / பதிவு உறுதிப்படுத்தப்பட்டது!
           </h2>
           <div className="text-lg text-gray-700 space-y-3">
             <p>
-              <strong>Name:</strong> {confirmation.name}
-              <div className="text-sm text-gray-600">பெயர்</div>
+              <strong>Name / பெயர்:</strong> {confirmation.name}
             </p>
             <p>
-              <strong>Phone:</strong> {confirmation.phone}
-              <div className="text-sm text-gray-600">தொலைபேசி</div>
+              <strong>Phone / தொலைபேசி:</strong> {confirmation.phone}
             </p>
             <p>
-              <strong>Service:</strong> {confirmation.service}
-              <div className="text-sm text-gray-600">சேவை</div>
+              <strong>Service / சேவை:</strong> {confirmation.service}
             </p>
             <p>
-              <strong>Reference ID:</strong> {confirmation.referenceId}
-              <div className="text-sm text-gray-600">குறிப்பு அடையாள எண்</div>
+              <strong>Reference ID / குறிப்பு எண்:</strong>{" "}
+              {confirmation.referenceId}
             </p>
             <p>
-              <strong>Assigned Provider:</strong> {confirmation.provider}
-              <div className="text-sm text-gray-600">ஒதுக்கப்பட்ட சேவை வழங்குநர்</div>
+              <strong>Assigned Provider / நியமிக்கப்பட்ட சேவையாளர்:</strong>{" "}
+              {confirmation.provider}
             </p>
             <p>
-              <strong>Estimated Arrival:</strong> {confirmation.estimatedArrival}
-              <div className="text-sm text-gray-600">எதிர்பார்க்கப்படும் வருகை நேரம்</div>
+              <strong>Estimated Arrival / மதிப்பீட்டுக்கூடிய வருகை நேரம்:</strong>{" "}
+              {confirmation.estimatedArrival}
             </p>
             <p>
-              <strong>Contact Support:</strong>{" "}
-              <a href={`tel:${confirmation.support}`} className="text-blue-600 underline">
+              <strong>Support / உதவி:</strong>{" "}
+              <a
+                href={`tel:${confirmation.support}`}
+                className="text-blue-600 underline"
+              >
                 {confirmation.support}
               </a>
-              <div className="text-sm text-gray-600">ஆதரவை தொடர்புகொள்ள</div>
             </p>
           </div>
           <div className="mt-6 text-center">
@@ -166,8 +168,7 @@ const BookingConfirmation = () => {
               onClick={downloadReceipt}
               className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105"
             >
-              📄 Download Receipt
-              <span className="text-sm block">ரசீதைப் பதிவிறக்கவும்</span>
+              📄 Download Receipt / ரசீதை பதிவிறக்கவும்
             </button>
           </div>
         </>
