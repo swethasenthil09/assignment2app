@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { Volume2 } from 'lucide-react'; // Optional audio icon from lucide-react
 
 export default function Home() {
   return (
@@ -15,7 +14,7 @@ export default function Home() {
         {/* Optional Audio Instruction Button */}
         <div className="flex justify-center mb-10">
           <button className="flex items-center gap-2 px-4 py-2 bg-green-200 text-green-800 rounded-full shadow hover:bg-green-300 transition">
-            <Volume2 className="w-5 h-5" />
+            <span className="text-lg">🔊</span>
             <span className="text-sm font-semibold">Tap to Hear Instructions</span>
           </button>
         </div>
