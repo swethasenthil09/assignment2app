@@ -1,7 +1,7 @@
 // pages/BookingConfirmation.js
 
 import React, { useState } from "react";
-import { db } from "@/lib/firebase"; // make sure this points to your Firebase setup
+import { db } from "../lib/firebase"; // ✅ This uses a relative path and will work
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const BookingConfirmation = () => {
