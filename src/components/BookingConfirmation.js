@@ -1,7 +1,7 @@
 // pages/BookingConfirmation.js
 
 import React, { useState } from "react";
-import { db } from "../lib/firebase";
+import { db } from "../lib/firebase"; // ✅ This uses a relative path and will work
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const BookingConfirmation = () => {
@@ -20,30 +20,6 @@ const BookingConfirmation = () => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const downloadReceipt = (details) => {
-    if (!details) return;
-
-    const file = new Blob(
-      [
-        `Smart Gram Sewa - Booking Receipt\n\n` +
-        `Name: ${details.name}\n` +
-        `Phone: ${details.phone}\n` +
-        `Service: ${details.service}\n` +
-        `Reference ID: ${details.referenceId}\n` +
-        `Provider: ${details.provider}\n` +
-        `Estimated Arrival: ${details.estimatedArrival}`,
-      ],
-      { type: "text/plain" }
-    );
-
-    const element = document.createElement("a");
-    element.href = URL.createObjectURL(file);
-    element.download = "booking_receipt.txt";
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element); // 🧼 Clean up
   };
 
   const handleSubmit = async (e) => {
@@ -67,11 +43,25 @@ const BookingConfirmation = () => {
       await addDoc(collection(db, "bookings"), bookingDetails);
       setConfirmation(bookingDetails);
       setSubmitted(true);
-      downloadReceipt(bookingDetails); // ✅ Automatically trigger receipt download
     } catch (error) {
       console.error("❌ Error saving booking:", error);
       alert("Something went wrong while saving your booking. Please try again.");
     }
+  };
+
+  const downloadReceipt = () => {
+    const file = new Blob(
+      [
+        `Smart Gram Sewa - Booking Receipt\n\nName: ${confirmation.name}\nPhone: ${confirmation.phone}\nService: ${confirmation.service}\nReference ID: ${confirmation.referenceId}\nProvider: ${confirmation.provider}\nEstimated Arrival: ${confirmation.estimatedArrival}`,
+      ],
+      { type: "text/plain" }
+    );
+
+    const element = document.createElement("a");
+    element.href = URL.createObjectURL(file);
+    element.download = "booking_receipt.txt";
+    document.body.appendChild(element);
+    element.click();
   };
 
   return (
@@ -139,6 +129,14 @@ const BookingConfirmation = () => {
             <p><strong>Assigned Provider:</strong> {confirmation.provider}</p>
             <p><strong>Estimated Arrival:</strong> {confirmation.estimatedArrival}</p>
             <p><strong>Contact Support:</strong> <a href={`tel:${confirmation.support}`} className="text-blue-600 underline">{confirmation.support}</a></p>
+          </div>
+          <div className="mt-6 text-center">
+            <button
+              onClick={downloadReceipt}
+              className="bg-blue-600 text-white font-semibold px-6 py-3 rounded-full shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105"
+            >
+              📄 Download Receipt
+            </button>
           </div>
         </>
       )}
